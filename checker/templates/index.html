@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+  <link rel="stylesheet" href="{% static 'main.css' %}">
+
+</head>
+<body>
+
+{% if status %}
+    {% for day in context %}
+        <h1> {{ day.status}}</h1>
+    {% endfor %}
+
+
+    {% else %}
+        <h3>dont know</h3>
+{% endif %}
+
+
+</body>
+</html>
