@@ -1,6 +1,5 @@
 from django.db import models
 
-
 Sunday = 'Sunday'
 Monday = 'Monday'
 Tuesday = 'Tuesday'
