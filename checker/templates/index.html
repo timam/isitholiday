@@ -14,9 +14,15 @@
 
     {% autoescape on %}
 
-        <h3>{% for day in status %}
-            {{ day.weekday |upper }}, {{ day.date |date:"d M Y" | upper }}
-        {% endfor %}
+        <h3>
+
+            {% for day in status %}
+                {{ day.weekday |upper }}, {{ day.date |date:"d M Y" | upper }}
+
+            {% empty %}
+                <h3 style="font-size: 20px">DOCTOR!!! WHO AM I? WHERE AM I? </h3>
+
+            {% endfor %}
         </h3>
 
         <hr style="width: 30%">
@@ -24,6 +30,10 @@
         <h1>
             {% for day in status %}
                 {{ day.status |upper }}</h1>
+
+            {% empty %}
+                <h1 style="font-size: 22px ">WHY CAN'T I REMEMBER ANYTHING?</h1>
+
             {% endfor %}
         </h1>
 
