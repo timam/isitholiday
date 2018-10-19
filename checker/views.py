@@ -8,8 +8,8 @@ import datetime
 def index(request):
 
     gimme_date = datetime.datetime.now().date()
-    entry = Entry.objects.filter(date__exact=gimme_date).get()
-    status = entry.status
-    context = {"status": status}
+    entry = Entry.objects.filter(date__exact=gimme_date).all()
+    context = {"status": entry}
 
     return render(request, 'index.html', context)
+
