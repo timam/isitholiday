@@ -11,6 +11,14 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+# Create .env file path.
+dotenv_path = join(dirname(__file__), '.env')
+
+# Load file from the path.
+load_dotenv(dotenv_path)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +31,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&_97@lcbx*d2lb_t6^w*o9lg&2rh5tel4@2q=c1ysgxee8kkiw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
+print('Env Value: ' + DEBUG)
 
 ALLOWED_HOSTS = []
 
