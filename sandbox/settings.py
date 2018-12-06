@@ -32,9 +32,9 @@ SECRET_KEY = '&_97@lcbx*d2lb_t6^w*o9lg&2rh5tel4@2q=c1ysgxee8kkiw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
-print('Env Value: ' + DEBUG)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','').split(",")
+
 
 
 # Application definition
