@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent { node { label 'not-holiday-dev' } }
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Hello Development!"'
+                sh 'ifconfig'
             }
         }
     }
