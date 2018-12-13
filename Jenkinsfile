@@ -1,14 +1,15 @@
 pipeline {
     agent { node { label 'not-holiday-dev' } }
 
-    stage('NotifySlack') {
-        steps {
-        cucumberSlackSend 'devops'
-        slackSend(message: 'waiting for build ', baseUrl: 'www.abc.com', channel: 'devops')
-        }
-    }
-
     stages {
+
+        stage('NotifySlack') {
+            steps {
+            cucumberSlackSend 'devops'
+            slackSend(message: 'waiting for build ', baseUrl: 'www.abc.com', channel: 'devops')
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'ifconfig'
