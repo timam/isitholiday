@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                slackSend (color: '#FFFF00', message: "Job '${env.JOB_NAME}' is waiting for approval to deploy. Please visit (${env.BUILD_URL}) to approve")
+
+
                 sh 'ifconfig'
                 script {
                     timeout(time: 10, unit: 'MINUTES') {
