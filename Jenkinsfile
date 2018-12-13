@@ -1,17 +1,11 @@
 pipeline {
     agent { node { label 'not-holiday-dev' } }
 
-    stages {
-
-        stage('NotifySlack') {
-            steps {
-            cucumberSlackSend 'devops'
-            slackSend(message: 'waiting for build ', baseUrl: 'www.abc.com', channel: 'devops')
-            }
-        }
-
         stage('Build') {
             steps {
+
+                slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+
                 sh 'ifconfig'
                 script {
                     timeout(time: 10, unit: 'MINUTES') {
