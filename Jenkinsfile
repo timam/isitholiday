@@ -1,5 +1,12 @@
 pipeline {
     agent { node { label 'not-holiday-dev' } }
+
+    stage('NotifySlack') {
+        steps {
+        cucumberSlackSend 'devops'
+        slackSend(message: 'waiting for build ', baseUrl: 'www.abc.com', channel: 'devops')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -12,15 +19,5 @@ pipeline {
             }
         }
 
-
-        stage 'Cucumber Reports' {
-
-        // process cucumber reports
-        step([$class: 'CucumberReportPublisher', jsonReportDirectory: 'target/', fileIncludePattern: '*.json'])
-
-        // send report to slack
-        cucumberSendSlack: channel: 'test-results-channel', json: 'target/test-results.json'
-
-        }
     }
 }
