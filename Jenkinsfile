@@ -5,6 +5,7 @@ pipeline {
         steps {
         cucumberSlackSend 'devops'
         slackSend(message: 'waiting for build ', baseUrl: 'www.abc.com', channel: 'devops')
+        }
     }
 
     stages {
