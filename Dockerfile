@@ -8,7 +8,7 @@ ADD requirements.txt /not-holiday/
 
 RUN pip install -r requirements.txt
 
-RUN apt-get update -y && apt-get install -y libpq-dev python-dev
-RUN pip install psycopg2
+RUN apt-get update -y && apt-get install -y python3-mysqldb default-libmysqlclient-dev python-dev gdal-bin python3-gdal
+RUN pip install mysqlclient
 
 # ADD projectile /code/docker
